@@ -1,0 +1,69 @@
+<nav class="navbar navbar-expand-lg " style="background-color: #15172b;">
+	<i class="fa fa-play-circle-o navbar-brand" style="font-size:48px;color:white"></i>
+	<a class="navbar-brand noHover">Vision</a>
+	<a class="navbar-brand noHover" style="margin-left: 10px; color:bisque;">Hi there {{currentUser.username}} !</a>
+	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText"
+		aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+		<span class="navbar-toggler-icon"></span>
+	</button>
+	<div class="collapse navbar-collapse" id="navbarText">
+		<ul class="navbar-nav mr-auto">
+			<li class="nav-item" style="margin-left: 5%;">
+				<a class="nav-link" (click)="navigateToHome()" >Home </a>
+			</li>
+			<li class="nav-item" style="margin-left: 5%;">
+				<a class="nav-link" (click)="navigateToProfile(currentUser.id)" >Profile</a>
+			</li>
+			<li class="nav-item" style="margin-left: 5%; ">
+				<a class="nav-link " (click)="navigateToAddVideo()" >Add_Video</a>
+			</li>
+			<li class="nav-item" style="margin-left: 5%; width: 500px;">
+				<input class="form-control mr-sm-2" type="search" placeholder="Search" [(ngModel)]="searchInput"  >
+			</li>
+			<li class="nav-item" style="margin-left: 5%;">
+				<button class="submit" type="submit" (click)="setSearchVariable()">Go</button>
+			</li>
+		</ul>
+	</div>
+	<a class="nav-link navbar-brand" style="font-size:15px;" href="/login" >Logout</a>
+</nav>
+
+<div class="row" style="margin: 0px; justify-content: center;">
+	<div class="column" style="margin-top: 10px; margin-left: 20px; margin-right: 20px;" *ngFor="let video of allVideos | search:searchString ">
+		<div class="card" style="width: 18rem; border-radius: 20px; border-width: 3px; border-color:#15172b ;">
+			<img class="card-img-top" style="border-radius: 17px;" src="{{video.imageLink}}" alt="image">
+			<div class="card-body">
+			<h5 class="card-title">{{video.title}}</h5>
+			<p class="card-text">{{video.description}}</p>
+			<p class="card-text">{{video.category}}</p>
+			<div class="row">
+				<div class="col">
+					<a class="btn btn-primary " style="background-color: #15172b; border-color: #15172b;" (click)="navigateToWatching(video.videoId)">Watch</a>
+				</div>
+				<div class="col" *ngIf="!currentUser.bookmarks.includes(video.videoId); else elseBlock">
+					<a class="btn btn-primary" style="background-color: #15172b; border-color: #15172b;" (click)="bookMark(video.videoId)">Bookmark</a>
+				</div>
+				<ng-template #elseBlock><a class="btn btn-primary" style="background-color: green; border-color: #15172b;" (click)="unMark(video.videoId)">Bookmarked</a></ng-template>
+			</div>
+			
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- <div class="box">
+  <div class="row header">
+    <p><b>header</b>
+      <br />
+      <br />(sized to content)</p>
+  </div>
+  <div class="row content">
+    <p>
+      <b>content</b>
+      (fills remaining space)
+    </p>
+  </div>
+  <div class="row footer">
+    <p><b>footer</b> (fixed height)</p>
+  </div>
+</div> -->

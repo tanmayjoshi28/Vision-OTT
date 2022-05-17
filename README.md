@@ -5,7 +5,13 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 node.js and angular
 
 ## Development server
-Navigate to project directory from your shell
+# Backend
+Navigate to backend project directory from your shell
+Run `npm install` to install dependencies. 
+Run `node app.js` for a dev server. Backend will start with end point as` http://localhost:3000/`
+
+# Frontend
+Navigate to front project directory from your shell
 Run `npm install` to install dependencies. 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 

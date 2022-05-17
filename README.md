@@ -2,11 +2,12 @@
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.1.3
 
 ## Pre-install
-node.js and angular
+Node.js , Angular.js and Oracle11G
 
 ## Development server
 ### Backend
 Navigate to backend project directory from your shell
+Connect your Oracle11G database with node.js 
 Run `npm install` to install dependencies. 
 Run `node app.js` for a dev server. Backend will start with end point as `http://localhost:3000/`
 
